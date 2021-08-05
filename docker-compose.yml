@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+    flask:
+        build: ./app
+        ports:
+            - 5010:5000
+        # networks:
+        #     - flask_net
+        restart:
+            always
+        
+    mysql:
+        image: mysql
+        ports: 
+            - 3307:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        # networks:
+        #     - mysql_net
+        volumes: 
+            # ce dossier la et exactement ce dossier qui est dans le conteneur
+            - ./app/src/db-init/:/docker-entrypoint-initdb.d/
+            # #  chemin pris sur google
+            # - db-data:/var/lib/mysql
+    
+    adminer:
+        image: adminer
+        ports:
+            - 8080:8080
+        # networks:
+        #     - mysql_net
+        #     - flask_net
+
+# Volume dans le conteneurs qui va garder les informations dans Docker 
+# volume nommé
+# volumes: 
+#     # db-data : 
+
+# networks:
+#     flask_net : 
+#     mysql_net :

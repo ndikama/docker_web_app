@@ -1,0 +1,11 @@
+FROM python
+
+WORKDIR /usr/src/app
+
+RUN pip install flask
+RUN pip install mysql-connector-python
+
+
+COPY ./src ./
+
+CMD ["python", "-m", "flask", "run", "--host=0.0.0.0"]

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block title %}
+    <title>Hello</title>
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <h2>Hello</h2>
+    {{data}}
+    <ul>
+        {% for i in data %}
+        <li>
+            {{ i.ID_CONTINENT }} - {{ i.NOM_CONTINENT }}
+            <a href="http://127.0.0.1:5010/delete_continent/{{i.ID_CONTINENT}}"> X </a>
+            <a href="http://127.0.0.1:5010/update_continent_template?id={{i.ID_CONTINENT}}&nom={{i.NOM_CONTINENT}}">
+                Modifier </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="http://127.0.0.1:5010/add_continent_template">Liens vers bye bye
+    </a>
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Update !</title>
+    {% endblock %}
+    <title>Document</title>
+</head>
+
+<body>
+    {{ data }}
+    {{ data[0].id }}
+
+
+    {% block content %}
+    <form action="http://127.0.0.1:5010/update_continent" method="post">
+        <div>
+            <label>id
+                <input value="{{ data[0].id }}" type="text" name="id">
+            </label>
+            <label>nom du continent
+                <input value="{{ data[0].nom }}" type="text" name="nom">
+            </label>
+            <input type="submit" value="envoyer">
+        </div>
+    </form>
+    {% endblock %}
+
+</body>
+
+</html>
